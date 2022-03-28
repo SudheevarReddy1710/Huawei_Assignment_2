@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Huawei_Assignment_2</string>
     <string name="Heading">MUSIC PLAYER</string>
-    <string name="Song_name">SONG NAME</string>
+    <string name="Song_name">Perfect</string>
     <string name="play">Play</string>
     <string name="stop">Stop</string>
-    <string name="Song_desc">Author,Movie</string>
+    <string name="Song_desc">Song by One Direction(Official)</string>
 </resources>

@@ -3,22 +3,19 @@ package com.example.huawei_assignment_2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     ImageButton playB,stopB;
-    MediaPlayer player1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        playB = (ImageButton) findViewById(R.id.play_button);
-        stopB = (ImageButton) findViewById(R.id.stop_button);
-        playB.setOnClickListener(new View.OnClickListener() {
+        playB = findViewById(R.id.play_button);
+        stopB = findViewById(R.id.stop_button);
+        playB.setOnClickListener(this);/*new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -28,18 +25,32 @@ public class MainActivity extends AppCompatActivity {
                 startService(intent);
 
             }
-        });
-        stopB.setOnClickListener(new View.OnClickListener() {
+        });*/
+        stopB.setOnClickListener(this);/*new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"StopButtonClicked",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(),PlayerService.class);
+                Intent intent = new Intent(MainActivity.this,PlayerService.class);
                 //end service
                 stopService(intent);
             }
-        });
+        });*/
 
 
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(MainActivity.this,PlayerService.class);
+        if(view == playB)
+        {
+            startService(intent);
+        }
+        else if(view ==  stopB)
+        {
+            stopService(intent);
+        }
 
     }
 }

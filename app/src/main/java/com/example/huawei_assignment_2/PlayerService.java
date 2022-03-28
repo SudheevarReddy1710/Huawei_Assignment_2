@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -22,7 +23,7 @@ public class PlayerService extends Service {
     public void onCreate() {
 
         super.onCreate();
-        mp = MediaPlayer.create(getApplicationContext(),R.raw.perfect);
+        mp = MediaPlayer.create(getApplicationContext(), R.raw.perfect);
 
     }
 
@@ -30,17 +31,17 @@ public class PlayerService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         //starting the song
         mp.start();
-        Toast.makeText(getApplicationContext(),"Service Started",Toast.LENGTH_SHORT).show();
-        //looping the song
         mp.setLooping(true);
+        Toast.makeText(getApplicationContext(),"Service Started",Toast.LENGTH_LONG).show();
+        //looping the song
         return START_STICKY;
     }
 
     @Override
     public void onDestroy() {
         //stopping the song
-        Toast.makeText(getApplicationContext(),"Service Stopped",Toast.LENGTH_SHORT).show();
-        mp.stop();
         super.onDestroy();
+        mp.stop();
+        Toast.makeText(getApplicationContext(),"Service Stopped",Toast.LENGTH_LONG).show();
     }
 }
